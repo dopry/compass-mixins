@@ -1,3 +1,6 @@
+@use "../../typography/text/replacement";
+@use "base";
+
 // @doc off
 // Example 1:
 //
@@ -65,8 +68,8 @@ $sprite-image-default-height: $sprite-default-size !default;
 
 // Similar to 'sprite-replace-text-with-dimensions' but does not autmaticly set the demensions
 @mixin sprite-replace-text ($map, $sprite, $dimensions: false, $offset-x: 0, $offset-y: 0) {    
-  @include hide-text;
-  @include sprite($map, $sprite, $dimensions, $offset-x, $offset-y);
+  @include replacement.hide-text;
+  @include base.sprite($map, $sprite, $dimensions, $offset-x, $offset-y);
   background-image: $map;
   background-repeat: no-repeat;
 }

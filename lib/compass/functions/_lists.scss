@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:meta";
 //
 // A partial implementation of the Ruby list functions from Compass:
 // https://github.com/Compass/compass/blob/stable/lib/compass/sass_extensions/functions/lists.rb
@@ -6,23 +8,23 @@
 
 // compact is part of libsass
 
-@function -compass-nth($list, $place) {
+@function compass-nth($list, $place) {
   // Yep, Sass-lists are 1-indexed.
   @if $place == "first" {
     $place: 1;
   }
   @if $place == "last" {
-    $place: length($list);
+    $place: list.length($list);
   }
-  @return nth($list, $place);
+  @return list.nth($list, $place);
 }
 
 // compass_list can't be implemented in sass script
 
-@function -compass-space-list($item1, $item2:null, $item3:null, $item4:null, $item5:null, $item6:null, $item7:null, $item8:null, $item9:null) {
+@function compass-space-list($item1, $item2:null, $item3:null, $item4:null, $item5:null, $item6:null, $item7:null, $item8:null, $item9:null) {
   $items: ();
   // Support for polymorphism.
-  @if type-of($item1) == 'list' {
+  @if meta.type-of($item1) == 'list' {
     // Passing a single array of properties.
     $items: $item1;
   } @else {
@@ -31,8 +33,8 @@
 
   $full: first-value-of($items);
 
-  @for $i from 2 through length($items) {
-    $item: nth($items, $i);
+  @for $i from 2 through list.length($items) {
+    $item: list.nth($items, $i);
     @if $item != null {
       $full: $full $item;
     }
@@ -41,17 +43,17 @@
   @return $full;
 }
 
-@function -compass-list-size($list) {
-  @return length($list);
+@function compass-list-size($list) {
+  @return list.length($list);
 }
 
 @function -compass-slice($list, $start, $end: false) {
   @if $end == false {
-    $end: length($list);
+    $end: list.length($list);
   }
-  $full: nth($list, $start);
+  $full: list.nth($list, $start);
   @for $i from $start + 1 through $end {
-    $full: $full, nth($list, $i);
+    $full: $full, list.nth($list, $i);
   }
   @return $full;
 }
@@ -61,7 +63,7 @@
 
   $full: false;
   @each $item in $list {
-    @if index($rejects, $item) {}
+    @if list.index($rejects, $item) {}
     @else {
       @if $full {
         $full: $full, $item;
@@ -75,15 +77,15 @@
 }
 
 @function first-value-of($list) {
-  @return nth($list, 1);
+  @return list.nth($list, 1);
 }
 
 @function compact($vars...) {
-  $separator: list-separator($vars);
+  $separator: list.separator($vars);
   $list: ();
   @each $var in $vars {
       @if $var {
-          $list: append($list, $var, $separator);
+          $list: list.append($list, $var, $separator);
       }
   }
   @return $list;

@@ -1,4 +1,4 @@
-@import "hacks";
+@use "hacks";
 
 //**
 // Cross browser min-height mixin.
@@ -13,4 +13,4 @@
 // @private This mixin is not meant to be used directly.
 @mixin hacked-minimum($property, $value) {
   min-#{$property}: $value;
-  @include bang-hack($property, auto, $value); }
+  @include hacks.bang-hack($property, auto, $value); }

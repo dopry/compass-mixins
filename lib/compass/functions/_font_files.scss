@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
 //
 // A partial implementation of the Ruby fonts functions from Compass:
 // https://github.com/Compass/compass/blob/stable/core/lib/compass/core/sass_extensions/functions/font_files.rb
@@ -57,29 +60,29 @@
   // if the font format is specified after the font file name, skip the next iteration.
   $skip-next: false;
   // number of font files including font format.
-  $font-file-length: length($font-files);
+  $font-file-length: list.length($font-files);
 
   @for $i from 1 through $font-file-length {
     @if(not $skip-next) {
-      $font-file: nth($font-files, $i);
-      $font-file-next: if($i < $font-file-length, nth($font-files, $i + 1), false);
+      $font-file: list.nth($font-files, $i);
+      $font-file-next: if($i < $font-file-length, list.nth($font-files, $i + 1), false);
 
       // add font url.
       $full: $full + 'url("#{$font-path}/#{$font-file}")';
 
       // add the font format if it is specified after the font file name.
-      @if $font-file-next and map-has-key($font-types, $font-file-next) {
+      @if $font-file-next and map.has-key($font-types, $font-file-next) {
         $full: $full + ' format("#{$font-file-next}")';
         $skip-next: true;
       } @else {
         // add a font format based on the font file name extension.
         @each $type, $extension in $font-types {
-          $pos: str-index($font-file, '.' + $extension);
+          $pos: string.index($font-file, '.' + $extension);
 
           @if($font-file-next == $extension) {
             $full: $full + ' format("#{$type}")';
             $skip-next: true;
-          } @else if ($pos and (to-lower-case(str-slice($font-file, $pos + 1)) == $extension)) {
+          } @else if ($pos and (string.to-lower-case(string.slice($font-file, $pos + 1)) == $extension)) {
             $full: $full + ' format("#{$type}")';
           }
         }
@@ -91,5 +94,5 @@
     @if (not $skip-next and $i != $font-file-length) { $full: $full + ', ';}
   }
 
-  @return unquote($full);
+  @return string.unquote($full);
 }

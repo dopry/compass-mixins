@@ -1,87 +1,91 @@
+@use "../../compass/css3/opacity";
+@use "../../compass/css3/transform";
+@use "../core";
+
 // ---------------------------------------------------------------------------
-@include keyframes(flip) {
+@include core.keyframes(flip) {
   0% {
-    @include transform(perspective(400px) rotateY(0));
-    @include animation-timing-function(ease-out);
+    @include transform.transform(perspective(400px) rotateY(0));
+    @include core.animation-timing-function(ease-out);
   }
   40% {
-    @include transform(perspective(400px) translateZ(150px) rotateY(170deg));
-    @include animation-timing-function(ease-out);
+    @include transform.transform(perspective(400px) translateZ(150px) rotateY(170deg));
+    @include core.animation-timing-function(ease-out);
   }
   50% {
-    @include transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1));
-    @include animation-timing-function(ease-in);
+    @include transform.transform(perspective(400px) translateZ(150px) rotateY(190deg) scale(1));
+    @include core.animation-timing-function(ease-in);
   }
   80% {
-    @include transform(perspective(400px) rotateY(360deg) scale(0.95));
-    @include animation-timing-function(ease-in);
+    @include transform.transform(perspective(400px) rotateY(360deg) scale(0.95));
+    @include core.animation-timing-function(ease-in);
   }
   100% {
-    @include transform(perspective(400px) scale(1));
-    @include animation-timing-function(ease-in);
+    @include transform.transform(perspective(400px) scale(1));
+    @include core.animation-timing-function(ease-in);
   }
 }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(flipInX) {
+@include core.keyframes(flipInX) {
   0% {
-    @include transform(perspective(400px) rotateX(90deg));
-    @include opacity(0);
+    @include transform.transform(perspective(400px) rotateX(90deg));
+    @include opacity.opacity(0);
   }
   40% {
-    @include transform(perspective(400px) rotateX(-10deg));
+    @include transform.transform(perspective(400px) rotateX(-10deg));
   }
   70% {
-    @include transform(perspective(400px) rotateX(10deg));
+    @include transform.transform(perspective(400px) rotateX(10deg));
   }
   100% {
-    @include transform(perspective(400px) rotateX(0deg));
-    @include opacity(1);
+    @include transform.transform(perspective(400px) rotateX(0deg));
+    @include opacity.opacity(1);
   }
 }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(flipOutX) {
+@include core.keyframes(flipOutX) {
   0% {
-    @include transform(perspective(400px) rotateX(0deg));
-    @include opacity(1);
+    @include transform.transform(perspective(400px) rotateX(0deg));
+    @include opacity.opacity(1);
   }
   100% {
-    @include transform(perspective(400px) rotateX(90deg));
-    @include opacity(0);
+    @include transform.transform(perspective(400px) rotateX(90deg));
+    @include opacity.opacity(0);
   }
 }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(flipInY) {
+@include core.keyframes(flipInY) {
   0% {
-    @include transform(perspective(400px) rotateY(90deg));
-    @include opacity(0);
+    @include transform.transform(perspective(400px) rotateY(90deg));
+    @include opacity.opacity(0);
   }
   40% {
-    @include transform(perspective(400px) rotateY(-10deg));
+    @include transform.transform(perspective(400px) rotateY(-10deg));
   }
   70% {
-    @include transform(perspective(400px) rotateY(10deg));
+    @include transform.transform(perspective(400px) rotateY(10deg));
   }
   100% {
-    @include transform(perspective(400px) rotateY(0deg));
-    @include opacity(1);
+    @include transform.transform(perspective(400px) rotateY(0deg));
+    @include opacity.opacity(1);
   }
 }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(flipOutY) {
+@include core.keyframes(flipOutY) {
   0% {
-    @include transform(perspective(400px) rotateY(0deg));
-    @include opacity(1);
+    @include transform.transform(perspective(400px) rotateY(0deg));
+    @include opacity.opacity(1);
   }
   100% {
-    @include transform(perspective(400px) rotateY(90deg));
-    @include opacity(0);
+    @include transform.transform(perspective(400px) rotateY(90deg));
+    @include opacity.opacity(0);
   }
 }

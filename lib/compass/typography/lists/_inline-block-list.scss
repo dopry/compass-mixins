@@ -19,21 +19,21 @@
 //       }
 //     }
 
-@import "bullets";
-@import "horizontal-list";
-@import "../../utilities/general/float";
-@import "../../css3/inline-block";
+@use "bullets";
+@use "horizontal-list";
+@use "../../utilities/general/float";
+@use "../../css3/inline-block";
 
 // Can be mixed into any selector that target a ul or ol that is meant
 // to have an inline-block layout. Used to implement `inline-block-list`.
 @mixin inline-block-list-container {
-  @include horizontal-list-container; }
+  @include horizontal-list.horizontal-list-container; }
 
 // Can be mixed into any li selector that is meant to participate in a horizontal layout.
 // Used to implement `inline-block-list`.
 @mixin inline-block-list-item($padding: false) {
-  @include no-bullet;
-  @include inline-block;
+  @include bullets.no-bullet;
+  @include inline-block.inline-block;
   white-space: nowrap;
   @if $padding {
     padding: {

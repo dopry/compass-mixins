@@ -15,16 +15,18 @@
 //     > li
 //       +horizontal-list-item
 
-@import "bullets";
-@import "../../utilities/general/clearfix";
-@import "../../utilities/general/reset";
-@import "../../utilities/general/float";
+@use "bullets";
+@use "../../utilities/general/clearfix";
+@use "../../utilities/general/reset";
+@use "../../utilities/general/float";
+@use "../../functions/constants";
+@use "../../reset/utilities";
 
 // Can be mixed into any selector that target a ul or ol that is meant
 // to have a horizontal layout. Used to implement +horizontal-list.
 @mixin horizontal-list-container {
-  @include reset-box-model;
-  @include clearfix; }
+  @include utilities.reset-box-model;
+  @include clearfix.clearfix; }
 
 // Can be mixed into any li selector that is meant to participate in a horizontal layout.
 // Used to implement +horizontal-list.
@@ -37,17 +39,17 @@
 //
 // Setting `$padding` to `false` disables the padding between list elements
 @mixin horizontal-list-item($padding: 4px, $direction: left) {
-  @include no-bullet;
+  @include bullets.no-bullet;
   white-space: nowrap;
-  @include float($direction);
+  @include float.float($direction);
   @if $padding {
     padding: {
       left: $padding;
       right: $padding;
     }
     &:first-child, &.first { padding-#{$direction}: 0; }
-    &:last-child { padding-#{opposite-position($direction)}: 0; }
-    &.last { padding-#{opposite-position($direction)}: 0; }
+    &:last-child { padding-#{constants.opposite-position($direction)}: 0; }
+    &.last { padding-#{constants.opposite-position($direction)}: 0; }
   }
 }
 

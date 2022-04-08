@@ -22,10 +22,10 @@
 // Specials
 //  - hinge rollIn rollOut
 // ---------------------------------------------------------------------------
-@import "animate/attention-seekers";
-@import "animate/bouncing";
-@import "animate/fading";
-@import "animate/flippers";
-@import "animate/lightspeed";
-@import "animate/rotating";
-@import "animate/specials";
+@use "animate/attention-seekers";
+@use "animate/bouncing";
+@use "animate/fading";
+@use "animate/flippers";
+@use "animate/lightspeed";
+@use "animate/rotating";
+@use "animate/specials";

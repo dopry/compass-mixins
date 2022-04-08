@@ -1,8 +1,9 @@
-@import "shared";
+@use "sass:string";
+@use "shared";
 
 // display:box; must be used for any of the other flexbox mixins to work properly
 @mixin display-box {
-  @include experimental-value(display, box,
+  @include shared.experimental-value(display, box,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -14,8 +15,8 @@ $default-box-orient: horizontal !default;
 @mixin box-orient(
   $orientation: $default-box-orient
 ) {
-  $orientation : unquote($orientation);
-  @include experimental(box-orient, $orientation,
+  $orientation : string.unquote($orientation);
+  @include shared.experimental(box-orient, $orientation,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -27,8 +28,8 @@ $default-box-align: stretch !default;
 @mixin box-align(
   $alignment: $default-box-align
 ) {
-  $alignment : unquote($alignment);
-  @include experimental(box-align, $alignment,
+  $alignment : string.unquote($alignment);
+  @include shared.experimental(box-align, $alignment,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -42,7 +43,7 @@ $default-box-flex: 0 !default;
 @mixin box-flex(
   $flex: $default-box-flex
 ) {
-  @include experimental(box-flex, $flex,
+  @include shared.experimental(box-flex, $flex,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -54,7 +55,7 @@ $default-box-flex-group: 1 !default;
 @mixin box-flex-group(
   $group: $default-box-flex-group
 ) {
-  @include experimental(box-flex-group, $group,
+  @include shared.experimental(box-flex-group, $group,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -66,7 +67,7 @@ $default-box-ordinal-group: 1 !default;
 @mixin box-ordinal-group(
   $group: $default-ordinal-flex-group
 ) {
-  @include experimental(box-ordinal-group, $group,
+  @include shared.experimental(box-ordinal-group, $group,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -78,8 +79,8 @@ $default-box-direction: normal !default;
 @mixin box-direction(
   $direction: $default-box-direction
 ) {
-  $direction: unquote($direction);
-  @include experimental(box-direction, $direction,
+  $direction: string.unquote($direction);
+  @include shared.experimental(box-direction, $direction,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -91,8 +92,8 @@ $default-box-lines: single !default;
 @mixin box-lines(
   $lines: $default-box-lines
 ) {
-  $lines: unquote($lines);
-  @include experimental(box-lines, $lines,
+  $lines: string.unquote($lines);
+  @include shared.experimental(box-lines, $lines,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }
@@ -104,8 +105,8 @@ $default-box-pack: start !default;
 @mixin box-pack(
   $pack: $default-box-pack
 ) {
-  $pack: unquote($pack);
-  @include experimental(box-pack, $pack,
+  $pack: string.unquote($pack);
+  @include shared.experimental(box-pack, $pack,
     -moz, -webkit, not(-o), -ms, not(-khtml), official
   );
 }

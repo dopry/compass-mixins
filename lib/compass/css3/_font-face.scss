@@ -1,4 +1,6 @@
-@import "shared";
+@use "sass:string";
+@use "shared";
+@use "../functions/font_files";
 
 // Cross-browser support for @font-face. Supports IE, Gecko, Webkit, Opera.
 //
@@ -30,12 +32,12 @@
   $weight: false,
   $style: false
 ) {
-  $iefont: unquote("#{$eot}?#iefix");
+  $iefont: string.unquote("#{$eot}?#iefix");
   @font-face {
-    font-family: quote($name);
+    font-family: string.quote($name);
     @if $eot {
-      src: font-url($eot);
-      $font-files: font-url($iefont) unquote("format('eot')"), $font-files; 
+      src: font_files.font-url($eot);
+      $font-files: font_files.font-url($iefont) string.unquote("format('eot')"), $font-files; 
     }
     src: $font-files;
     @if $weight {

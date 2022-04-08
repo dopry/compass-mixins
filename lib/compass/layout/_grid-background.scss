@@ -1,7 +1,10 @@
 @use "sass:math";
 
-@import "../css3/images";
-@import "../css3/background-size";
+@use "sass:list";
+@use "sass:string";
+@use "../css3/images";
+@use "../css3/background-size";
+@use "../functions/lists";
 
 // Set the color of your columns
 $grid-background-column-color     : rgba(100, 100, 225, 0.25)   !default;
@@ -51,8 +54,8 @@ $grid-background-force-fluid      : false                       !default;
   $column-color   : $grid-background-column-color,
   $gutter-color   : $grid-background-gutter-color
 ) {
-  $grid: compact();
-  $grid: append($grid, $gutter-color $offset, comma);
+  $grid: lists.compact();
+  $grid: list.append($grid, $gutter-color $offset, comma);
   @for $i from 0 to $total {
 
     // $a represents the start of this column, initially equal to the offset
@@ -65,12 +68,12 @@ $grid-background-force-fluid      : false                       !default;
     // $z represents the end of a gutter, equal to $g plus one gutter-width
     $z: $g + $gutter;
 
-    @if (unit($a) == "%") and ($i == ($total - 1)) {
+    @if (math.unit($a) == "%") and ($i == ($total - 1)) {
       $z: 100%;
     }
 
     // and we add this column/gutter pair to our grid
-    $grid: join($grid, ($column-color $a, $column-color $g, $gutter-color $g, $gutter-color $z));
+    $grid: list.join($grid, ($column-color $a, $column-color $g, $gutter-color $g, $gutter-color $z));
   }
 
   @return $grid;
@@ -86,10 +89,10 @@ $grid-background-force-fluid      : false                       !default;
   $gutter-color   : $grid-background-gutter-color,
   $force-fluid    : $grid-background-force-fluid
 ) {
-  $grid: unquote("");
+  $grid: string.unquote("");
 
   // don't force fluid grids when they are already fluid.
-  @if unit($column) == "%" { $force-fluid: false; }
+  @if math.unit($column) == "%" { $force-fluid: false; }
 
   @if $force-fluid {
     $grid: get-column-fluid-grid($total,$column,$gutter,$offset,$column-color,$gutter-color);
@@ -128,8 +131,8 @@ $grid-background-force-fluid      : false                       !default;
   $color    : $grid-background-baseline-color
 ) {
   @if $show-grid-backgrounds and $show-baseline-grid-backgrounds {
-    @include background-image(get-baseline-gradient($color));
-    @include background-size(100% $baseline);
+    @include images.background-image(get-baseline-gradient($color));
+    @include background-size.background-size(100% $baseline);
     background-position: left top;
   }
 }
@@ -145,7 +148,7 @@ $grid-background-force-fluid      : false                       !default;
   $force-fluid    : $grid-background-force-fluid
 ) {
   @if $show-grid-backgrounds and $show-column-grid-backgrounds {
-    @include background-image(
+    @include images.background-image(
       get-column-gradient($total,$column,$gutter,$offset,$column-color,$gutter-color, $force-fluid)
     );
     background-position: left top;
@@ -166,11 +169,11 @@ $grid-background-force-fluid      : false                       !default;
 ) {
   @if $show-grid-backgrounds {
     @if $show-baseline-grid-backgrounds and $show-column-grid-backgrounds {
-      @include background-image(
+      @include images.background-image(
         get-baseline-gradient($baseline-color),
         get-column-gradient($total,$column,$gutter,$offset,$column-color,$gutter-color, $force-fluid)
       );
-      @include background-size(100% $baseline, auto);
+      @include background-size.background-size(100% $baseline, auto);
       background-position: left top;
     } @else {
       @include baseline-grid-background($baseline, $baseline-color);

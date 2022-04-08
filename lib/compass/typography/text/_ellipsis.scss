@@ -1,4 +1,6 @@
-@import "../../css3/shared";
+@use "sass:string";
+@use "../../css3/shared";
+@use "../../support";
 
 // To get full firefox support, you must install the ellipsis pattern:
 //
@@ -11,7 +13,7 @@ $use-mozilla-ellipsis-binding: false !default;
 @mixin ellipsis($no-wrap: true) {
   @if $no-wrap { white-space: nowrap; }
   overflow: hidden;
-  @include experimental(text-overflow, ellipsis,
+  @include shared.experimental(text-overflow, ellipsis,
     not(-moz),
     not(-webkit),
     -o,
@@ -19,7 +21,7 @@ $use-mozilla-ellipsis-binding: false !default;
     not(-khtml),
     official
   );
-  @if $experimental-support-for-mozilla and $use-mozilla-ellipsis-binding {
-    -moz-binding: stylesheet-url(unquote("xml/ellipsis.xml#ellipsis"));
+  @if support.$experimental-support-for-mozilla and $use-mozilla-ellipsis-binding {
+    -moz-binding: stylesheet-url(string.unquote("xml/ellipsis.xml#ellipsis"));
   }
 }

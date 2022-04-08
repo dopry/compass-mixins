@@ -2,7 +2,8 @@
 // This file can be expanded to handle all the user interface properties as
 // they become available in browsers:
 // http://www.w3.org/TR/2000/WD-css3-userint-20000216
-@import "shared";
+@use "sass:string";
+@use "shared";
 
 
 // This property controls the selection model and granularity of an element.
@@ -10,8 +11,8 @@
 // @param $select
 //   [ none | text | toggle | element | elements | all | inherit ]
 @mixin user-select($select) {
-  $select: unquote($select);
-  @include experimental(user-select, $select,
+  $select: string.unquote($select);
+  @include shared.experimental(user-select, $select,
     -moz, -webkit, not(-o), -ms, -khtml, official
   );
 }

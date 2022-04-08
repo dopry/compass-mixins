@@ -1,68 +1,71 @@
+@use "../../../compass/css3/transform";
+@use "../../core";
+
 // ---------------------------------------------------------------------------
-@include keyframes(bounceIn) {
+@include core.keyframes(bounceIn) {
   0% {
     opacity: 0;
-    @include scale(0.3); }
+    @include transform.scale(0.3); }
   50% {
     opacity: 1;
-    @include scale(1.05); }
+    @include transform.scale(1.05); }
   70% {
-    @include scale(0.9); }
+    @include transform.scale(0.9); }
   100% {
-    @include scale(1); } }
+    @include transform.scale(1); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(bounceInDown) {
+@include core.keyframes(bounceInDown) {
   0% {
     opacity: 0;
-    @include translateY(-2000px); }
+    @include transform.translateY(-2000px); }
   60% {
     opacity: 1;
-    @include translateY(30px); }
+    @include transform.translateY(30px); }
   80% {
-    @include translateY(-10px); }
+    @include transform.translateY(-10px); }
   100% {
-    @include translateY(0); } }
+    @include transform.translateY(0); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(bounceInUp) {
+@include core.keyframes(bounceInUp) {
   0% {
     opacity: 0;
-    @include translateY(2000px); }
+    @include transform.translateY(2000px); }
   60% {
     opacity: 1;
-    @include translateY(-30px); }
+    @include transform.translateY(-30px); }
   80% {
-    @include translateY(10px); }
+    @include transform.translateY(10px); }
   100% {
-    @include translateY(0); } }
+    @include transform.translateY(0); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(bounceInRight) {
+@include core.keyframes(bounceInRight) {
   0% {
     opacity: 0;
-    @include translateX(2000px); }
+    @include transform.translateX(2000px); }
   60% {
     opacity: 1;
-    @include translateX(-30px); }
+    @include transform.translateX(-30px); }
   80% {
-    @include translateX(10px); }
+    @include transform.translateX(10px); }
   100% {
-    @include translateX(0); } }
+    @include transform.translateX(0); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(bounceInLeft) {
+@include core.keyframes(bounceInLeft) {
   0% {
     opacity: 0;
-    @include translateX(-2000px); }
+    @include transform.translateX(-2000px); }
   60% {
     opacity: 1;
-    @include translateX(30px); }
+    @include transform.translateX(30px); }
   80% {
-    @include translateX(-10px); }
+    @include transform.translateX(-10px); }
   100% {
-    @include translateX(0); } }
+    @include transform.translateX(0); } }

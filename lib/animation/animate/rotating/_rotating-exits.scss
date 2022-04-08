@@ -1,58 +1,61 @@
+@use "../../../compass/css3/transform";
+@use "../../core";
+
 // ---------------------------------------------------------------------------
-@include keyframes(rotateOut) {
+@include core.keyframes(rotateOut) {
   0% {
-    @include transform-origin(center center);
-    @include rotate(0);
+    @include transform.transform-origin(center center);
+    @include transform.rotate(0);
     opacity: 1; }
   100% {
-    @include transform-origin(center center);
-    @include rotate(200deg);
+    @include transform.transform-origin(center center);
+    @include transform.rotate(200deg);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(rotateOutDownLeft) {
+@include core.keyframes(rotateOutDownLeft) {
   0% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
+    @include transform.transform-origin(left bottom);
+    @include transform.rotate(0);
     opacity: 1; }
   100% {
-    @include transform-origin(left bottom);
-    @include rotate(90deg);
+    @include transform.transform-origin(left bottom);
+    @include transform.rotate(90deg);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(rotateOutUpLeft) {
+@include core.keyframes(rotateOutUpLeft) {
   0% {
-    @include transform-origin(left bottom);
-    @include rotate(0);
+    @include transform.transform-origin(left bottom);
+    @include transform.rotate(0);
     opacity: 1; }
   100% {
-    @include transform-origin(left bottom);
-    @include rotate(-90deg);
+    @include transform.transform-origin(left bottom);
+    @include transform.rotate(-90deg);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(rotateOutDownRight) {
+@include core.keyframes(rotateOutDownRight) {
   0% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
+    @include transform.transform-origin(right bottom);
+    @include transform.rotate(0);
     opacity: 1; }
   100% {
-    @include transform-origin(right bottom);
-    @include rotate(-90deg);
+    @include transform.transform-origin(right bottom);
+    @include transform.rotate(-90deg);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(rotateOutUpRight) {
+@include core.keyframes(rotateOutUpRight) {
   0% {
-    @include transform-origin(right bottom);
-    @include rotate(0);
+    @include transform.transform-origin(right bottom);
+    @include transform.rotate(0);
     opacity: 1; }
   100% {
-    @include transform-origin(right bottom);
-    @include rotate(90deg);
+    @include transform.transform-origin(right bottom);
+    @include transform.rotate(90deg);
     opacity: 0; } }

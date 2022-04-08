@@ -1,7 +1,7 @@
-@import "functions/lists";
-@import "functions/cross_browser_support";
-@import "functions/gradient_support";
-@import "functions/constants";
-@import "functions/display";
-@import "functions/colors";
-@import "functions/font_files";
+@use "functions/lists";
+@use "functions/cross_browser_support";
+@use "functions/gradient_support";
+@use "functions/constants";
+@use "functions/display";
+@use "functions/colors";
+@use "functions/font_files";

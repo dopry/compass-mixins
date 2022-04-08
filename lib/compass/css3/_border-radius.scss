@@ -1,4 +1,6 @@
-@import "shared";
+@use "sass:string";
+@use "shared";
+@use "../functions/lists";
 
 $default-border-radius: 5px !default;
 
@@ -41,7 +43,7 @@ $default-border-radius: 5px !default;
   @if $vertical-radius {
     // Webkit doesn't understand the official shorthand syntax for specifying
     // a vertical radius unless so in case there's several we only take the first.
-    @include experimental(border-radius, first-value-of($radius) first-value-of($vertical-radius),
+    @include shared.experimental(border-radius, lists.first-value-of($radius) lists.first-value-of($vertical-radius),
       not(-moz),
       -webkit,
       not(-o),
@@ -49,7 +51,7 @@ $default-border-radius: 5px !default;
       not(-khtml),
       not(official)
     );
-    @include experimental("border-radius", $radius unquote("/") $vertical-radius,
+    @include shared.experimental("border-radius", $radius string.unquote("/") $vertical-radius,
       -moz,
       not(-webkit),
       not(-o),
@@ -59,7 +61,7 @@ $default-border-radius: 5px !default;
     );
   }
   @else {
-    @include experimental(border-radius, $radius);
+    @include shared.experimental(border-radius, $radius);
   }
 }
 
@@ -70,7 +72,7 @@ $default-border-radius: 5px !default;
 
 @mixin border-corner-radius($vert, $horz, $radius: $default-border-radius) {
   // Support for mozilla's syntax for specifying a corner
-  @include experimental("border-radius-#{$vert}#{$horz}", $radius,
+  @include shared.experimental("border-radius-#{$vert}#{$horz}", $radius,
     -moz,
     not(-webkit),
     not(-o),
@@ -78,7 +80,7 @@ $default-border-radius: 5px !default;
     not(-khtml),
     not(official)
   );
-  @include experimental("border-#{$vert}-#{$horz}-radius", $radius,
+  @include shared.experimental("border-#{$vert}-#{$horz}-radius", $radius,
     not(-moz),
     -webkit,
     not(-o),

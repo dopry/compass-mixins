@@ -2,7 +2,7 @@
 // Extends the bottom of the element to enclose any floats it contains.
 // @doc on
 
-@import "hacks";
+@use "hacks";
 
 // This basic method is preferred for the usual case, when positioned
 // content will not show outside the bounds of the container.
@@ -11,7 +11,7 @@
 // Credit: [quirksmode.org](http://www.quirksmode.org/blog/archives/2005/03/clearing_floats.html)
 @mixin clearfix {
   overflow: hidden;
-  @include has-layout;
+  @include hacks.has-layout;
 }
 
 // This older method from Position Is Everything called
@@ -27,7 +27,7 @@
     overflow   : hidden;
     visibility : hidden;
   }
-  @include has-layout;
+  @include hacks.has-layout;
 }
 
 // This is an updated version of the PIE clearfix method that reduces the amount of CSS output.
@@ -40,5 +40,5 @@
     display: table;
     clear: both;
   }
-  @include has-layout;
+  @include hacks.has-layout;
 }

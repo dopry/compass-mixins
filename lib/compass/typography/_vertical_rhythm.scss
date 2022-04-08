@@ -1,6 +1,6 @@
 @use "sass:math";
 
-@import "../layout/grid-background";
+@use "../layout/grid-background";
 
 // The base font size.
 $base-font-size: 16px !default;
@@ -43,12 +43,12 @@ $base-half-leader: $base-leader * 0.5;
 
 // True if a number has a relative unit.
 @function relative-unit($number) {
-  @return unit($number) == "%" or unit($number) == "em" or unit($number) == "rem"
+  @return math.unit($number) == "%" or math.unit($number) == "em" or math.unit($number) == "rem"
 }
 
 // True if a number has an absolute unit.
 @function absolute-unit($number) {
-  @return not(relative-unit($number) or unitless($number));
+  @return not(relative-unit($number) or math.is-unitless($number));
 }
 
 @if $relative-font-sizing and not(relative-unit($font-unit)) {
@@ -85,7 +85,7 @@ $base-half-leader: $base-leader * 0.5;
   @if $img {
     background: image-url($img);
   } @else {
-    @include baseline-grid-background($base-rhythm-unit);
+    @include grid-background.baseline-grid-background($base-rhythm-unit);
   }
 }
 
@@ -121,8 +121,8 @@ $base-half-leader: $base-leader * 0.5;
   }
   $rhythm: math.div($font-unit * ($lines * $base-line-height - $offset), $font-size);
   // Round the pixels down to nearest integer.
-  @if unit($rhythm) == px {
-    $rhythm: floor($rhythm);
+  @if math.unit($rhythm) == px {
+    $rhythm: math.floor($rhythm);
   }
   @return $rhythm;
 }
@@ -130,8 +130,8 @@ $base-half-leader: $base-leader * 0.5;
 // Calculate the minimum multiple of rhythm units needed to contain the font-size.
 @function lines-for-font-size($font-size) {
   $lines: if($round-to-nearest-half-line,
-              ceil(math.div(2 * $font-size, $base-line-height)) * 0.5,
-              ceil(math.div($font-size, $base-line-height)));
+              math.ceil(math.div(2 * $font-size, $base-line-height)) * 0.5,
+              math.ceil(math.div($font-size, $base-line-height)));
   @if $lines * $base-line-height - $font-size < $min-line-padding * 2 {
     $lines: $lines + if($round-to-nearest-half-line, 0.5, 1);
   }

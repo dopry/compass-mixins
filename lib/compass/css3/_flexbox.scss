@@ -1,5 +1,5 @@
-@import "../support";
-@import "shared";
+@use "../support";
+@use "shared";
 
 // This is the underlying implementation for all the other mixins in this module.
 // It is the only way to access prefix support for older versions of the spec.
@@ -10,10 +10,10 @@
 @mixin flexbox($properties) {
   @each $prop, $value in $properties {
     @if $prop == display {
-      @include experimental-value(display, $value, not(-moz), -webkit,
+      @include shared.experimental-value(display, $value, not(-moz), -webkit,
                                   not(-o), not(-ms), not(-khtml), official);
     } @else {
-      @include experimental($prop, $value, not(-moz), -webkit, not(-o),
+      @include shared.experimental($prop, $value, not(-moz), -webkit, not(-o),
                             not(-ms), not(-khtml), official);
     }
   }

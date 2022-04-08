@@ -1,4 +1,7 @@
-@import "shared";
+@use "sass:math";
+@use "sass:string";
+@use "shared";
+@use "../support";
 
 // Provides cross-browser CSS opacity. Takes a number between 0 and 1 as the argument, e.g. 0.5 for 50% opacity.
 //
@@ -6,8 +9,8 @@
 //         A number between 0 and 1, where 0 is transparent and 1 is opaque.
 
 @mixin opacity($opacity) {
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8 {
-    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  @if support.$legacy-support-for-ie6 or support.$legacy-support-for-ie7 or support.$legacy-support-for-ie8 {
+    filter: string.unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{math.round($opacity * 100)})");
   }
   opacity: $opacity;
 }

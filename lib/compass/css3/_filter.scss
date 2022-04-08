@@ -1,5 +1,6 @@
-@import "shared";
-@import "../functions";
+@use "shared";
+@use "../functions";
+@use "../functions/lists";
 
 // Provides cross-browser support for the upcoming (?) css3 filter property.
 //
@@ -17,8 +18,8 @@
   $filter-9 : false,
   $filter-10: false
 ) {
-  $filter : compact($filter-1, $filter-2, $filter-3, $filter-4, $filter-5, $filter-6, $filter-7, $filter-8, $filter-9, $filter-10);
-  @include experimental(filter, $filter,
+  $filter : lists.compact($filter-1, $filter-2, $filter-3, $filter-4, $filter-5, $filter-6, $filter-7, $filter-8, $filter-9, $filter-10);
+  @include shared.experimental(filter, $filter,
     -moz, -webkit, not(-o), not(-ms), not(-khtml), official
   );
 }

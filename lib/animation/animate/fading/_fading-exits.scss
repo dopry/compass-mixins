@@ -1,5 +1,8 @@
+@use "../../../compass/css3/transform";
+@use "../../core";
+
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOut) {
+@include core.keyframes(fadeOut) {
   0% {
     opacity: 1; }
   100% {
@@ -7,80 +10,80 @@
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutUp) {
+@include core.keyframes(fadeOutUp) {
   0% {
-    @include translateY(0);
+    @include transform.translateY(0);
     opacity: 1; }
   100% {
-    @include translateY(-20px);
+    @include transform.translateY(-20px);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutDown) {
+@include core.keyframes(fadeOutDown) {
   0% {
-    @include translateY(0);
+    @include transform.translateY(0);
     opacity: 1; }
   100% {
-    @include translateY(20px);
+    @include transform.translateY(20px);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutRight) {
+@include core.keyframes(fadeOutRight) {
   0% {
-    @include translateX(0);
+    @include transform.translateX(0);
     opacity: 1; }
   100% {
-    @include translateX(20px);
+    @include transform.translateX(20px);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutLeft) {
+@include core.keyframes(fadeOutLeft) {
   0% {
-    @include translateX(0);
+    @include transform.translateX(0);
     opacity: 1; }
   100% {
-    @include translateX(-20px);
+    @include transform.translateX(-20px);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutUpBig) {
+@include core.keyframes(fadeOutUpBig) {
   0% {
-    @include translateY(0);
+    @include transform.translateY(0);
     opacity: 1; }
   100% {
-    @include translateY(-2000px);
+    @include transform.translateY(-2000px);
     opacity: 0; } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutDownBig) {
+@include core.keyframes(fadeOutDownBig) {
   0% {
     opacity: 1;
-    @include translateY(0); }
+    @include transform.translateY(0); }
   100% {
     opacity: 0;
-    @include translateY(2000px); } }
+    @include transform.translateY(2000px); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutRightBig) {
+@include core.keyframes(fadeOutRightBig) {
   0% {
     opacity: 1;
-    @include translateX(0); }
+    @include transform.translateX(0); }
   100% {
     opacity: 0;
-    @include translateX(2000px); } }
+    @include transform.translateX(2000px); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(fadeOutLeftBig) {
+@include core.keyframes(fadeOutLeftBig) {
   0% {
     opacity: 1;
-    @include translateX(0); }
+    @include transform.translateX(0); }
   100% {
     opacity: 0;
-    @include translateX(-2000px); } }
+    @include transform.translateX(-2000px); } }

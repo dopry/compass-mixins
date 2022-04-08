@@ -1,24 +1,28 @@
+@use "../../compass/css3/opacity";
+@use "../../compass/css3/transform";
+@use "../core";
+
 // ---------------------------------------------------------------------------
-@include keyframes(lightSpeedIn) {
+@include core.keyframes(lightSpeedIn) {
   0% {
-    @include transform(translateX(100%) skewX(-30deg));
-    @include opacity(0); }
+    @include transform.transform(translateX(100%) skewX(-30deg));
+    @include opacity.opacity(0); }
   60% {
-    @include transform(translateX(-20%) skewX(30deg));
-    @include opacity(1); }
+    @include transform.transform(translateX(-20%) skewX(30deg));
+    @include opacity.opacity(1); }
   80% {
-    @include transform(translateX(0%) skewX(-15deg));
-    @include opacity(1); }
+    @include transform.transform(translateX(0%) skewX(-15deg));
+    @include opacity.opacity(1); }
   100% {
-    @include transform(translateX(0%) skewX(0deg));
-    @include opacity(1); } }
+    @include transform.transform(translateX(0%) skewX(0deg));
+    @include opacity.opacity(1); } }
 
 
 // ---------------------------------------------------------------------------
-@include keyframes(lightSpeedOut) {
+@include core.keyframes(lightSpeedOut) {
   0% {
-    @include transform(translateX(0%) skewX(0deg));
-    @include opacity(1); }
+    @include transform.transform(translateX(0%) skewX(0deg));
+    @include opacity.opacity(1); }
   100% {
-    @include transform(translateX(100%) skewX(-30deg));
-    @include opacity(0); } }
+    @include transform.transform(translateX(100%) skewX(-30deg));
+    @include opacity.opacity(0); } }

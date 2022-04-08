@@ -1,3 +1,5 @@
+@use "../functions/display";
+
 // Based on [Eric Meyer's reset 2.0](http://meyerweb.com/eric/tools/css/reset/index.html)
 // Global reset rules.
 // For more specific resets, use the reset mixins provided below
@@ -113,7 +115,7 @@
 // so they are rendered correctly in browsers that don't recognize them
 // and reset in browsers that have default styles for them.
 @mixin reset-html5 {
-  #{elements-of-type(html5-block)} {
+  #{display.elements-of-type(html5-block)} {
     display: block; } }
 
 // Resets the display of inline and block elements to their default display
@@ -130,12 +132,12 @@
 //     body.unregistered
 //       +reset-display(".unregistered-only")
 @mixin reset-display($selector: "", $important: false) {
-  #{append-selector(elements-of-type("inline"), $selector)} {
+  #{append-selector(display.elements-of-type("inline"), $selector)} {
     @if $important {
       display: inline !important; }
     @else {
       display: inline; } }
-  #{append-selector(elements-of-type("block"), $selector)} {
+  #{append-selector(display.elements-of-type("block"), $selector)} {
     @if $important {
       display: block !important; }
     @else {

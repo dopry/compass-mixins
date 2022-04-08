@@ -1,4 +1,4 @@
-@import "../../support";
+@use "../../support";
 
 // The `zoom` approach generates less CSS but does not validate.
 // Set this to `block` to use the display-property to hack the
@@ -9,7 +9,7 @@ $default-has-layout-approach: zoom !default;
 // to gain the "hasLayout" property in internet explorer.
 // More information on [hasLayout](http://reference.sitepoint.com/css/haslayout).
 @mixin has-layout($approach: $default-has-layout-approach) {
-  @if $legacy-support-for-ie {
+  @if support.$legacy-support-for-ie {
     @if $approach == zoom {
       @include has-layout-zoom;
     } @else if $approach == block {
@@ -22,13 +22,13 @@ $default-has-layout-approach: zoom !default;
 }
 
 @mixin has-layout-zoom {
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+  @if support.$legacy-support-for-ie6 or support.$legacy-support-for-ie7 {
     *zoom: 1;
   }
 }
 
 @mixin has-layout-block {
-  @if $legacy-support-for-ie {
+  @if support.$legacy-support-for-ie {
     // This makes ie6 get layout
     display: inline-block;
     // and this puts it back to block
@@ -39,7 +39,7 @@ $default-has-layout-approach: zoom !default;
 // A hack to supply IE6 (and below) with a different property value.
 // [Read more](http://www.cssportal.com/css-hacks/#in_css-important).
 @mixin bang-hack($property, $value, $ie6-value) {
-  @if $legacy-support-for-ie6 {
+  @if support.$legacy-support-for-ie6 {
     #{$property}: #{$value} !important;
     #{$property}: #{$ie6-value};
   }
